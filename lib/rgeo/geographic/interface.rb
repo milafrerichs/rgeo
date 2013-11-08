@@ -493,6 +493,22 @@ module RGeo
         factory_
       end
 
+      def simple_wgs84_factory(opts_={})
+        factory_ = Geographic::Factory.new('Spherical',
+          :proj4 => _proj4_4326,
+          :coord_sys => _coordsys_4326,
+          :srid => 4326,
+          :wkt_parser => opts_[:wkt_parser],
+          :wkb_parser => opts_[:wkb_parser],
+          :wkt_generator => opts_[:wkt_generator],
+          :wkb_generator => opts_[:wkb_generator],
+          :has_z_coordinate => opts_[:has_z_coordinate],
+          :has_m_coordinate => opts_[:has_m_coordinate],
+          :uses_lenient_assertions => opts_[:uses_lenient_assertions],
+          :buffer_resolution => opts_[:buffer_resolution])
+        factory_
+      end
+
 
       def _proj4_4055  # :nodoc:
         unless defined?(@proj4_4055)
